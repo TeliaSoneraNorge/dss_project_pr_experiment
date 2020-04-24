@@ -15,5 +15,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Update PR"
+          pip install pygithub
           python val_qual.py
           python cicd/validate_quality.py
