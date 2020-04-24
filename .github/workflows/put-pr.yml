@@ -1,0 +1,18 @@
+name: Create Pull Request
+on: push
+jobs:
+  updatePullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+      - name: Install hub cli
+        uses: geertvdc/setup-hub@master
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Update PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Update PR"
+          python ./cicd/validate-quality.py
