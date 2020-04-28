@@ -28,14 +28,16 @@ jobs:
           # python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions
 #    - name: Install hub cli
 #      uses: geertvdc/setup-hub@master
-    - name: Install dataiku repo
+    - name: Install dataiku keys
       env:
         DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
       run: |
         mkdir dep_keys
         echo "$DATAIKU_READONLY_DEPLOY_KEY" > ~/dep_keys/dataiku_rsa
-        ls -l ~/dep_keys/dataiku_rsa
         chmod 600 ~/dep_keys/dataiku_rsa
+        ls -l ~/dep_keys/dataiku_rsa
+    - name: Install dataiku repo
+      run: |
         # Replace branch with master when working
         ssh-agent bash -c 'ssh-add ~/dep_keys/dataiku_rsa ; git clone --single-branch --branch validate-pr-quality git@github.com:TeliaSoneraNorge/dataiku.git'
     - name: Dump GitHub context
