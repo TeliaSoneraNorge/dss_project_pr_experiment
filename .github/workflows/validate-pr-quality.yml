@@ -30,8 +30,8 @@ jobs:
 #      uses: geertvdc/setup-hub@master
     - name: Install dataiku keys
       env:
-        # DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
-        DATAIKU_READONLY_DEPLOY_KEY: 'fooo'
+        DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
+        # DATAIKU_READONLY_DEPLOY_KEY: 'fooo'
       run: |
         mkdir ~/dep_keys
         echo "$DATAIKU_READONLY_DEPLOY_KEY" > ~/dep_keys/dataiku_rsa
