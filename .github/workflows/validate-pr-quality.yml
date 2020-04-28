@@ -40,7 +40,8 @@ jobs:
     - name: Install dataiku repo
       run: |
         # Replace branch with master when working
-        ssh-agent bash -c 'ssh-add ~/dep_keys/dataiku_rsa ; git clone --single-branch --branch validate-pr-quality git@github.com:TeliaSoneraNorge/dataiku.git'
+        mkdir ~/dataiku
+        ssh-agent bash -c 'ssh-add ~/dep_keys/dataiku_rsa ; git clone --single-branch --branch validate-pr-quality git@github.com:TeliaSoneraNorge/dataiku.git ~/dataiku'
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
