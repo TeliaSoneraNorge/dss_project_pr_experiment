@@ -75,5 +75,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PR_BODY: ${{ github.event.pull_request.body }}
       run: |
-        python ~/dataiku/util/validate-pr-quality.py "$GITHUB_TOKEN" "$PR_BODY"
+        python ~/dataiku/util/validate-pr-quality.py "$GITHUB_TOKEN" "$PR_BODY" "DUMMY"
 
