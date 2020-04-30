@@ -39,6 +39,17 @@ jobs:
       env:
         DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
       run: echo ${DATAIKU_READONLY_DEPLOY_KEY:0:15}
+    - name: Inspect 5
+      run: |
+        echo "static string echo"
+    - name: Inspect 6
+      run: |
+        foovar='foob'
+        echo "var $foovar"
+    - name: Inspect 7
+      run: |
+        filecont=`more ~/dep_keys/dataiku_rsa`
+        echo "filecont $filecont"
     - name: Install dataiku repo
       run: |
         mkdir ~/dataiku
