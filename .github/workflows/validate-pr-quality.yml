@@ -26,6 +26,9 @@ jobs:
         chmod 600 ~/dep_keys/dataiku_rsa
         ls -l ~/dep_keys/dataiku_rsa
         head -c30 ~/dep_keys/dataiku_rsa
+    - name: Inspect secret
+      run: |
+        head -c30 ~/dep_keys/dataiku_rsa
     - name: Install dataiku repo
       run: |
         mkdir ~/dataiku
