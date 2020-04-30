@@ -29,6 +29,16 @@ jobs:
     - name: Inspect secret
       run: |
         head -c30 ~/dep_keys/dataiku_rsa
+    - name: Inspect 2
+      run: head -c30 ~/dep_keys/dataiku_rsa
+    - name: Inspect 3
+      env:
+        DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
+      run: echo "$DATAIKU_READONLY_DEPLOY_KEY"
+    - name: Inspect 4
+      env:
+        DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
+      run: echo ${DATAIKU_READONLY_DEPLOY_KEY:0:15}
     - name: Install dataiku repo
       run: |
         mkdir ~/dataiku
