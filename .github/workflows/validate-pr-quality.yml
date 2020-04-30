@@ -1,10 +1,10 @@
 name: Validate project quality
 
 on:
-  push:
-    branches: [ master, dss_design ]
+#  push:
+#    branches: [ master, dss_design ]
   pull_request:
-    branches: [ master, dss_design ]
+    branches: [ master ]
 #    pull_request:
 #    branches: [ dss_design ]
 
