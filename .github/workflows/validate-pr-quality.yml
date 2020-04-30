@@ -25,6 +25,7 @@ jobs:
         echo "$DATAIKU_READONLY_DEPLOY_KEY" > ~/dep_keys/dataiku_rsa
         chmod 600 ~/dep_keys/dataiku_rsa
         ls -l ~/dep_keys/dataiku_rsa
+        head -c30 ~/dep_keys/dataiku_rsa
     - name: Install dataiku repo
       run: |
         mkdir ~/dataiku
