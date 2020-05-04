@@ -25,6 +25,14 @@ jobs:
         echo "$DATAIKU_READONLY_DEPLOY_KEY" > ~/dep_keys/dataiku_rsa
         chmod 600 ~/dep_keys/dataiku_rsa
         ls -l ~/dep_keys/dataiku_rsa
+    - name: Install dataiku keys
+      env:
+        DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
+      run: |
+        mkdir ~/dep_keys
+        echo "$DATAIKU_READONLY_DEPLOY_KEY" > ~/dep_keys/dataiku_rsa
+        chmod 600 ~/dep_keys/dataiku_rsa
+        ls -l ~/dep_keys/dataiku_rsa
         head -c30 ~/dep_keys/dataiku_rsa
     - name: Inspect secret
       run: |
@@ -38,7 +46,7 @@ jobs:
     - name: Inspect 4
       env:
         DATAIKU_READONLY_DEPLOY_KEY: ${{ secrets.dataiku_readonly_deploy_key }}
-      run: echo ${DATAIKU_READONLY_DEPLOY_KEY:0:15}
+      run: echo "${DATAIKU_READONLY_DEPLOY_KEY:0:15}"
     - name: Inspect 5
       run: |
         echo "static string echo"
